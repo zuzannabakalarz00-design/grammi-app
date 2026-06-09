@@ -1,0 +1,86 @@
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Grammi – japońska gramatyka</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Nagłówek -->
+        <header>
+            <div class="logo">
+                <span class="logo-icon">G</span>
+                <span class="logo-text">grammi</span>
+            </div>
+            <div class="header-actions">
+                <button id="speedrunBtn" class="speedrun-badge">⚡ Speedrun N5</button>
+            </div>
+        </header>
+
+        <!-- Główna nawigacja -->
+        <nav class="bottom-nav">
+            <button class="nav-btn active" data-tab="map">🗺️ Mapa</button>
+            <button class="nav-btn" data-tab="stats">📊 Statystyki</button>
+            <button class="nav-btn" data-tab="scanner">🔍 Skaner</button>
+        </nav>
+
+        <!-- Zawartość -->
+        <main>
+            <!-- EKRAN MAPY (drzewo gramatyki) -->
+            <div id="mapTab" class="tab active">
+                <div class="progress-header">
+                    <span>Twoja ścieżka N5</span>
+                    <span id="progressPercent">0%</span>
+                </div>
+                <div class="progress-bar">
+                    <div id="progressFill" class="progress-fill"></div>
+                </div>
+                
+                <div id="grammarTree" class="grammar-tree">
+                    <!-- dynamiczne drzewo z JS -->
+                </div>
+            </div>
+
+            <!-- EKRAN STATYSTYK -->
+            <div id="statsTab" class="tab">
+                <h3>📈 Twoje postępy</h3>
+                <canvas id="progressChart" width="300" height="150" style="width:100%; max-width:300px; height:auto"></canvas>
+                
+                <div class="stats-grid">
+                    <div class="stat-card superpowers">
+                        <h4>✨ Supermoce</h4>
+                        <ul id="superpowersList"></ul>
+                    </div>
+                    <div class="stat-card monsters">
+                        <h4>👹 Potwory do pokonania</h4>
+                        <ul id="monstersList"></ul>
+                    </div>
+                </div>
+                
+                <button id="quickFireBtn" class="quick-fire-btn">⚡ Szybkie strzały (10s)</button>
+                <div id="quickFireModal" class="modal hidden">
+                    <div class="modal-content">
+                        <p id="quickFireQuestion"></p>
+                        <input type="text" id="quickFireAnswer" placeholder="Twoja odpowiedź..." autocomplete="off">
+                        <div class="timer" id="timer">10s</div>
+                        <button id="quickFireSubmit">Sprawdź</button>
+                        <button id="quickFireClose">Zamknij</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- EKRAN SKANERA GRAMATYCZNEGO -->
+            <div id="scannerTab" class="tab">
+                <h3>🔍 Tłumacz + skaner gramatyczny</h3>
+                <textarea id="japaneseInput" rows="3" placeholder="Wklej japońskie zdanie..."></textarea>
+                <button id="scanBtn">Skanuj gramatykę</button>
+                <div id="scanResult" class="scan-result"></div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
