@@ -1,0 +1,295 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: #0F0F12;
+    color: #FFFFFF;
+}
+
+.app-container {
+    max-width: 500px;
+    margin: 0 auto;
+    min-height: 100vh;
+    background: #0F0F12;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background: #0F0F12;
+    border-bottom: 1px solid #2A2A35;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.logo-icon {
+    width: 32px;
+    height: 32px;
+    background: #FF2D5E;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 20px;
+    color: white;
+}
+
+.logo-text {
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.speedrun-badge {
+    background: #FFC107;
+    color: #0F0F12;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+/* Bottom navigation */
+.bottom-nav {
+    display: flex;
+    background: #1A1A24;
+    padding: 8px 20px;
+    gap: 20px;
+    border-top: 1px solid #2A2A35;
+    border-bottom: 1px solid #2A2A35;
+}
+
+.nav-btn {
+    flex: 1;
+    background: none;
+    border: none;
+    color: #888;
+    font-size: 14px;
+    padding: 8px;
+    cursor: pointer;
+    border-radius: 12px;
+    transition: all 0.2s;
+}
+
+.nav-btn.active {
+    background: #FF2D5E20;
+    color: #FF2D5E;
+    font-weight: 600;
+}
+
+/* Tabs */
+.tab {
+    display: none;
+    padding: 20px;
+    flex: 1;
+    overflow-y: auto;
+}
+
+.tab.active {
+    display: block;
+}
+
+/* Progress */
+.progress-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    font-size: 14px;
+    color: #aaa;
+}
+
+.progress-bar {
+    background: #2A2A35;
+    border-radius: 10px;
+    height: 8px;
+    overflow: hidden;
+    margin-bottom: 24px;
+}
+
+.progress-fill {
+    background: #FF2D5E;
+    width: 0%;
+    height: 100%;
+    transition: width 0.3s;
+}
+
+/* Drzewo gramatyki */
+.grammar-tree {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.grammar-node {
+    background: #1A1A24;
+    border-radius: 16px;
+    padding: 16px;
+    border-left: 4px solid #FF2D5E;
+    cursor: pointer;
+    transition: transform 0.1s;
+}
+
+.grammar-node.completed {
+    border-left-color: #00C853;
+    opacity: 0.7;
+}
+
+.grammar-node.locked {
+    border-left-color: #555;
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.node-title {
+    font-weight: 600;
+    font-size: 18px;
+    margin-bottom: 4px;
+}
+
+.node-pattern {
+    font-family: monospace;
+    font-size: 14px;
+    color: #FFC107;
+}
+
+/* Statystyki */
+.stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 20px 0;
+}
+
+.stat-card {
+    background: #1A1A24;
+    border-radius: 16px;
+    padding: 16px;
+}
+
+.stat-card h4 {
+    margin-bottom: 12px;
+    font-size: 14px;
+}
+
+.stat-card ul {
+    list-style: none;
+    font-size: 13px;
+}
+
+.stat-card li {
+    padding: 4px 0;
+    color: #ccc;
+}
+
+.quick-fire-btn {
+    width: 100%;
+    background: #FFC107;
+    color: #0F0F12;
+    border: none;
+    padding: 14px;
+    border-radius: 40px;
+    font-weight: 700;
+    font-size: 16px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+/* Modal szybkich strzałów */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal.hidden {
+    display: none;
+}
+
+.modal-content {
+    background: #1A1A24;
+    padding: 24px;
+    border-radius: 24px;
+    width: 90%;
+    max-width: 320px;
+    text-align: center;
+}
+
+.modal-content input {
+    width: 100%;
+    padding: 12px;
+    margin: 16px 0;
+    background: #2A2A35;
+    border: none;
+    border-radius: 12px;
+    color: white;
+    font-size: 16px;
+}
+
+.timer {
+    font-size: 24px;
+    font-weight: 700;
+    color: #FFC107;
+    margin: 8px 0;
+}
+
+/* Skaner */
+#japaneseInput {
+    width: 100%;
+    background: #1A1A24;
+    border: 1px solid #2A2A35;
+    border-radius: 12px;
+    padding: 12px;
+    color: white;
+    font-size: 16px;
+    margin: 16px 0;
+}
+
+#scanBtn {
+    background: #FF2D5E;
+    border: none;
+    padding: 12px;
+    border-radius: 40px;
+    color: white;
+    font-weight: 600;
+    width: 100%;
+    cursor: pointer;
+}
+
+.scan-result {
+    margin-top: 20px;
+    background: #1A1A24;
+    border-radius: 16px;
+    padding: 16px;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* Responsive */
+@media (max-width: 500px) {
+    .tab {
+        padding: 16px;
+    }
+}
